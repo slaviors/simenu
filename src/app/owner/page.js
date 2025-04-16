@@ -5,6 +5,7 @@ import MenuModal from "@/components/modals/owner/MenuModal";
 import OrderManagementPanel from "@/components/owner/OrderManagementPanel";
 import MenuManagementPanel from "@/components/owner/MenuManagementPanel";
 import BillManagementPanel from "@/components/owner/BillManagementPanel";
+import Image from "next/image";
 
 export default function OwnerDashboard() {
   const [activeTab, setActiveTab] = useState("orders");
@@ -207,10 +208,16 @@ export default function OwnerDashboard() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8 text-center">
-        SiMenu - Owner Dashboard
-      </h1>
+    <div className="container mx-auto px-4 py-8 bg-primary">
+      <div className="flex items-center justify-center mb-8">
+        <Image
+          src="/image/logo.png"
+          alt="Restaurant Logo"
+          width={200}
+          height={200}
+          className="mb-4"
+        />
+      </div>
       {notification && (
         <div
           className={`mb-6 p-3 rounded-md ${
@@ -226,7 +233,7 @@ export default function OwnerDashboard() {
         <button
           className={`py-2 px-4 font-medium mr-4 ${
             activeTab === "orders"
-              ? "text-blue-600 border-b-2 border-blue-600"
+              ? "text-highlight border-b-2 border-highlight"
               : "text-gray-500 hover:text-gray-700"
           }`}
           onClick={() => setActiveTab("orders")}
@@ -241,7 +248,7 @@ export default function OwnerDashboard() {
         <button
           className={`py-2 px-4 font-medium ${
             activeTab === "menu"
-              ? "text-blue-600 border-b-2 border-blue-600"
+              ? "text-highlight border-b-2 border-highlight"
               : "text-gray-500 hover:text-gray-700"
           }`}
           onClick={() => setActiveTab("menu")}
@@ -251,12 +258,12 @@ export default function OwnerDashboard() {
         <button
           className={`py-2 px-4 font-medium ${
             activeTab === "bills"
-              ? "text-blue-600 border-b-2 border-blue-600"
+              ? "text-highlight border-b-2 border-highlight"
               : "text-gray-500 hover:text-gray-700"
           }`}
           onClick={() => setActiveTab("bills")}
         >
-          Bills{" "}
+          Bill Requests{" "}
           {hasPendingBills && (
             <span className="ml-2 bg-red-500 text-white px-2 py-0.5 rounded-full text-xs">
               New

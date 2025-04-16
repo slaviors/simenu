@@ -24,7 +24,7 @@ export default function MenuManagementPanel({ menuItems, onEditItem }) {
               onClick={() => setSelectedCategory(category)}
               className={`px-4 py-2 mr-2 rounded-md whitespace-nowrap ${
                 selectedCategory === category
-                  ? "bg-blue-600 text-white"
+                  ? "bg-[#99BC85] text-white"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
             >
@@ -67,7 +67,7 @@ export default function MenuManagementPanel({ menuItems, onEditItem }) {
               <div className="mt-4">
                 <button
                   onClick={() => onEditItem(item)}
-                  className="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
+                  className="w-full py-2 bg-[#99BC85] text-white rounded-md hover:bg-[#E4EFE7] hover:text-[#99BC85] transition-colors"
                 >
                   Edit Item
                 </button>

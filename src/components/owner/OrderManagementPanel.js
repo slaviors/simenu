@@ -46,7 +46,7 @@ export default function OrderManagementPanel({ orders, onUpdateStatus }) {
             onClick={() => setStatusFilter("all")}
             className={`px-3 py-1.5 rounded-md whitespace-nowrap ${
               statusFilter === "all"
-                ? "bg-blue-600 text-white"
+                ? "bg-[#99BC85] text-white"
                 : "bg-gray-100 text-gray-700 hover:bg-gray-200"
             }`}
           >

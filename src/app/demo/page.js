@@ -5,6 +5,7 @@ import MenuList from "@/components/main/demo/MenuList";
 import OrderList from "@/components/main/demo/OrderList";
 import MenuOrderModal from "@/components/modals/demo/MenuOrderModal";
 import BillRequestModal from "@/components/modals/demo/BillRequestModal";
+import Image from "next/image";
 
 export default function Demo() {
   const [menuItems, setMenuItems] = useState([]);
@@ -78,15 +79,23 @@ export default function Demo() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8 text-center">SiMenu</h1>
+    <div className="container mx-auto px-4 py-8 bg-[#FAF1E6]">
+      <div className="flex items-center justify-center mb-8">
+        <Image
+          src="/image/logo.png"
+          alt="Restaurant Logo"
+          width={200}
+          height={200}
+          className="mb-4"
+        />
+      </div>
 
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-semibold">Table #{tableNumber}</h2>
+        <h2 className="text-xl font-semibold text-highlight">Table #{tableNumber}</h2>
         <div className="flex gap-4">
           <button
             onClick={() => setIsBillModalOpen(true)}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md"
+            className="px-4 py-2 bg-[#99BC85] text-white rounded-md hover:bg-opacity-90 transition-colors"
           >
             Request Bill
           </button>
@@ -97,7 +106,7 @@ export default function Demo() {
 
       {orders.length > 0 && (
         <div className="mt-8">
-          <h2 className="text-xl font-semibold mb-4">Your Orders</h2>
+          <h2 className="text-xl font-semibold mb-4 text-highlight">Your Orders</h2>
           <OrderList orders={orders} />
         </div>
       )}

@@ -147,7 +147,7 @@ export default function MenuModal({ menuItem, onClose, onSubmit }) {
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-blue-600 text-white rounded-md"
+              className="px-4 py-2 bg-[#99BC85] text-white rounded-md"
             >
               {menuItem ? "Update" : "Create"}
             </button>

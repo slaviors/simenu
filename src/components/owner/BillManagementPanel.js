@@ -24,7 +24,7 @@ export default function BillManagementPanel({ billRequests, onProcessBill }) {
             onClick={() => setStatusFilter("all")}
             className={`px-3 py-1.5 rounded-md whitespace-nowrap ${
               statusFilter === "all"
-                ? "bg-blue-600 text-white"
+                ? "bg-[#99BC85] text-white"
                 : "bg-gray-100 text-gray-700 hover:bg-gray-200"
             }`}
           >
@@ -58,7 +58,7 @@ export default function BillManagementPanel({ billRequests, onProcessBill }) {
             placeholder="Search by table number..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#99BC85]"
           />
           {searchTerm && (
             <button
@@ -129,7 +129,7 @@ export default function BillManagementPanel({ billRequests, onProcessBill }) {
                 <div className="flex mt-4">
                   <button
                     onClick={() => onProcessBill(request.id)}
-                    className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
+                    className="w-full bg-[#99BC85] hover:bg-[#E4EFE7] hover:text-[#99BC85] text-white py-2 px-4 rounded"
                   >
                     Mark as Processed
                   </button>
