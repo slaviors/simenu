@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { query, simpleQuery } from "../db/db";
 
+console.log("manageOrder route.js is loaded");
+
 export async function PUT(request) {
   try {
     const { orderId, status } = await request.json();

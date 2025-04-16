@@ -195,7 +195,7 @@ export default function OrderManagementPanel({ orders, onUpdateStatus }) {
                           order.status !== "cancelled" && (
                             <button
                               onClick={() =>
-                                onUpdateStatus(order.id, "cancelled")
+                                onUpdateStatus(order.items[0].id, "cancelled")
                               }
                               className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
                             >
@@ -206,7 +206,7 @@ export default function OrderManagementPanel({ orders, onUpdateStatus }) {
                         {order.status === "pending" && (
                           <button
                             onClick={() =>
-                              onUpdateStatus(order.id, "preparing")
+                              onUpdateStatus(order.items[0].id, "preparing")
                             }
                             className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
                           >
@@ -215,7 +215,9 @@ export default function OrderManagementPanel({ orders, onUpdateStatus }) {
                         )}
                         {order.status === "preparing" && (
                           <button
-                            onClick={() => onUpdateStatus(order.id, "ready")}
+                            onClick={() =>
+                              onUpdateStatus(order.items[0].id, "ready")
+                            }
                             className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
                           >
                             Mark as Ready
@@ -224,7 +226,7 @@ export default function OrderManagementPanel({ orders, onUpdateStatus }) {
                         {order.status === "ready" && (
                           <button
                             onClick={() =>
-                              onUpdateStatus(order.id, "delivered")
+                              onUpdateStatus(order.items[0].id, "delivered")
                             }
                             className="px-4 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600"
                           >
@@ -234,7 +236,7 @@ export default function OrderManagementPanel({ orders, onUpdateStatus }) {
                         {order.status === "delivered" && (
                           <button
                             onClick={() =>
-                              onUpdateStatus(order.id, "completed")
+                              onUpdateStatus(order.items[0].id, "completed")
                             }
                             className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
                           >
