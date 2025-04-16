@@ -5,6 +5,7 @@ import MenuModal from "@/components/modals/owner/MenuModal";
 import OrderManagementPanel from "@/components/owner/OrderManagementPanel";
 import MenuManagementPanel from "@/components/owner/MenuManagementPanel";
 import BillManagementPanel from "@/components/owner/BillManagementPanel";
+import Navbar from "@/components/shared/Navbar";
 import Image from "next/image";
 
 export default function OwnerDashboard() {
@@ -242,109 +243,107 @@ export default function OwnerDashboard() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-primary">
-      <div className="flex items-center justify-center mb-8">
-        <Image
-          src="/image/logo.png"
-          alt="Restaurant Logo"
-          width={200}
-          height={200}
-          className="mb-4"
-        />
-      </div>
-      {notification && (
-        <div
-          className={`mb-6 p-3 rounded-md ${
-            notification.type === "error"
-              ? "bg-red-100 text-red-800"
-              : "bg-green-100 text-green-800"
-          }`}
-        >
-          {notification.message}
-        </div>
-      )}
-      <div className="flex border-b border-gray-200 mb-6">
-        <button
-          className={`py-2 px-4 font-medium mr-4 ${
-            activeTab === "orders"
-              ? "text-highlight border-b-2 border-highlight"
-              : "text-gray-500 hover:text-gray-700"
-          }`}
-          onClick={() => setActiveTab("orders")}
-        >
-          Orders{" "}
-          {hasNewOrders && (
-            <span className="ml-2 bg-red-500 text-white px-2 py-0.5 rounded-full text-xs">
-              New
-            </span>
-          )}
-        </button>
-        <button
-          className={`py-2 px-4 font-medium ${
-            activeTab === "menu"
-              ? "text-highlight border-b-2 border-highlight"
-              : "text-gray-500 hover:text-gray-700"
-          }`}
-          onClick={() => setActiveTab("menu")}
-        >
-          Menu Management
-        </button>
-        <button
-          className={`py-2 px-4 font-medium ${
-            activeTab === "bills"
-              ? "text-highlight border-b-2 border-highlight"
-              : "text-gray-500 hover:text-gray-700"
-          }`}
-          onClick={() => setActiveTab("bills")}
-        >
-          Bill Requests{" "}
-          {hasPendingBills && (
-            <span className="ml-2 bg-red-500 text-white px-2 py-0.5 rounded-full text-xs">
-              New
-            </span>
-          )}
-        </button>
-      </div>
-      {isLoading && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-30">
-          <div className="bg-white p-4 rounded-md shadow-md">Processing...</div>
-        </div>
-      )}
-      {activeTab === "orders" ? (
-        <OrderManagementPanel
-          orders={orders}
-          onUpdateStatus={handleUpdateOrderStatus}
-        />
-      ) : activeTab === "menu" ? (
-        <div>
-          <div className="flex justify-end mb-4">
-            <button
-              onClick={handleAddMenu}
-              className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
-            >
-              Add Menu Item
-            </button>
+    <div className="min-h-screen bg-primary">
+      <Navbar />
+      
+      <div className="container mx-auto px-4 py-8 pt-24">
+        {notification && (
+          <div
+            className={`mb-6 p-3 rounded-md ${
+              notification.type === "error"
+                ? "bg-red-100 text-red-800"
+                : "bg-green-100 text-green-800"
+            }`}
+          >
+            {notification.message}
           </div>
-          <MenuManagementPanel
-            menuItems={menuItems}
-            onEditItem={handleEditMenu}
-            onDeleteItem={handleDeleteMenu}
-          />
+        )}
+        
+        <div className="flex border-b border-gray-200 mb-6">
+          <button
+            className={`py-2 px-4 font-medium mr-4 ${
+              activeTab === "orders"
+                ? "text-highlight border-b-2 border-highlight"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+            onClick={() => setActiveTab("orders")}
+          >
+            Orders{" "}
+            {hasNewOrders && (
+              <span className="ml-2 bg-red-500 text-white px-2 py-0.5 rounded-full text-xs">
+                New
+              </span>
+            )}
+          </button>
+          <button
+            className={`py-2 px-4 font-medium ${
+              activeTab === "menu"
+                ? "text-highlight border-b-2 border-highlight"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+            onClick={() => setActiveTab("menu")}
+          >
+            Menu Management
+          </button>
+          <button
+            className={`py-2 px-4 font-medium ${
+              activeTab === "bills"
+                ? "text-highlight border-b-2 border-highlight"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+            onClick={() => setActiveTab("bills")}
+          >
+            Bill Requests{" "}
+            {hasPendingBills && (
+              <span className="ml-2 bg-red-500 text-white px-2 py-0.5 rounded-full text-xs">
+                New
+              </span>
+            )}
+          </button>
         </div>
-      ) : (
-        <BillManagementPanel
-          billRequests={billRequests}
-          onProcessBill={handleProcessBill}
-        />
-      )}
 
-      {isMenuModalOpen && (
-        <MenuModal
-          menuItem={editingMenuItem}
-          onClose={() => setIsMenuModalOpen(false)}
-          onSubmit={handleMenuSubmit}
-        />
-      )}
+        {isLoading && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-30">
+            <div className="bg-white p-4 rounded-md shadow-md">Processing...</div>
+          </div>
+        )}
+
+        {activeTab === "orders" ? (
+          <OrderManagementPanel
+            orders={orders}
+            onUpdateStatus={handleUpdateOrderStatus}
+          />
+        ) : activeTab === "menu" ? (
+          <div>
+            <div className="flex justify-end mb-4">
+              <button
+                onClick={handleAddMenu}
+                className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+              >
+                Add Menu Item
+              </button>
+            </div>
+            <MenuManagementPanel
+              menuItems={menuItems}
+              onEditItem={handleEditMenu}
+              onDeleteItem={handleDeleteMenu}
+            />
+          </div>
+        ) : (
+          <BillManagementPanel
+            billRequests={billRequests}
+            onProcessBill={handleProcessBill}
+          />
+        )}
+
+        {isMenuModalOpen && (
+          <MenuModal
+            menuItem={editingMenuItem}
+            onClose={() => setIsMenuModalOpen(false)}
+            onSubmit={handleMenuSubmit}
+          />
+        )}
+      </div>
     </div>
   );
 }
