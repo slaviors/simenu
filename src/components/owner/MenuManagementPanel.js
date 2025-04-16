@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 
-export default function MenuManagementPanel({ menuItems, onEditItem }) {
+export default function MenuManagementPanel({ menuItems, onEditItem, onDeleteItem }) {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   const categories = [
@@ -64,12 +64,26 @@ export default function MenuManagementPanel({ menuItems, onEditItem }) {
               <p className="text-gray-600 mt-2 text-sm line-clamp-2">
                 {item.description}
               </p>
-              <div className="mt-4">
+              <div className="mt-4 flex gap-2">
                 <button
                   onClick={() => onEditItem(item)}
-                  className="w-full py-2 bg-[#99BC85] text-white rounded-md hover:bg-[#E4EFE7] hover:text-[#99BC85] transition-colors"
+                  className="flex-1 py-2 bg-[#99BC85] text-white rounded-md hover:bg-[#E4EFE7] hover:text-[#99BC85] transition-colors"
                 >
                   Edit Item
+                </button>
+                <button
+                  onClick={() => {
+                    if (
+                      window.confirm(
+                        `Are you sure you want to delete "${item.name}"?`
+                      )
+                    ) {
+                      onDeleteItem(item.id);
+                    }
+                  }}
+                  className="flex-1 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors"
+                >
+                  Delete
                 </button>
               </div>
             </div>

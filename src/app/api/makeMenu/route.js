@@ -107,3 +107,38 @@ export async function PUT(request) {
     );
   }
 }
+export async function DELETE(request) {
+  try {
+    console.log("DELETE request received");
+    const data = await request.json();
+    console.log("Request data:", data);
+    const { id } = data;
+
+    if (!id) {
+      console.log("Missing ID in request");
+      return NextResponse.json(
+        { error: "Menu item ID is required" },
+        { status: 400 }
+      );
+    }
+
+    console.log(`Soft deleting menu item with ID: ${id}`);
+
+    const updateResult = await query(
+      "UPDATE menu_items SET active = 0 WHERE id = ?",
+      [id]
+    );
+    console.log("Update operation result:", updateResult);
+
+    return NextResponse.json({
+      success: true,
+      message: "Menu item removed successfully",
+    });
+  } catch (error) {
+    console.error("Error removing menu item:", error);
+    return NextResponse.json(
+      { error: `Failed to remove menu item: ${error.message}` },
+      { status: 500 }
+    );
+  }
+}

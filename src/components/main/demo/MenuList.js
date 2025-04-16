@@ -3,21 +3,18 @@ import { useState } from "react";
 
 export default function MenuList({ items, onItemClick }) {
   const [selectedCategory, setSelectedCategory] = useState("all");
-  
-  // Get unique categories from items
+
   const categories = ["all", ...new Set(items.map((item) => item.category))];
-  
-  // Filter items based on selected category
-  const filteredItems = selectedCategory === "all" 
-    ? items 
-    : items.filter((item) => item.category === selectedCategory);
-  
-  // Sort filtered items by ID
+
+  const filteredItems =
+    selectedCategory === "all"
+      ? items
+      : items.filter((item) => item.category === selectedCategory);
+
   const sortedItems = [...filteredItems].sort((a, b) => b.id - a.id);
 
   return (
     <div>
-      {/* Category Filter Buttons */}
       <div className="bg-white rounded-2xl p-4 mb-6">
         <div className="flex overflow-x-auto gap-2">
           {categories.map((category) => (
@@ -36,7 +33,6 @@ export default function MenuList({ items, onItemClick }) {
         </div>
       </div>
 
-      {/* Menu Items Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 bg-white rounded-2xl p-4">
         {sortedItems.map((item) => (
           <div

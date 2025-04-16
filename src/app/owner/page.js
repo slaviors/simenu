@@ -207,6 +207,40 @@ export default function OwnerDashboard() {
     }
   };
 
+  const handleDeleteMenu = async (menuItemId) => {
+    setIsLoading(true);
+    try {
+      const response = await fetch("/api/makeMenu", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id: menuItemId }),
+      });
+
+      if (response.ok) {
+        setMenuItems((prevItems) =>
+          prevItems.filter((item) => item.id !== menuItemId)
+        );
+        showNotification("Menu item deleted successfully");
+      } else {
+        const errorData = await response.json();
+        showNotification(
+          errorData.error || "Failed to delete menu item",
+          "error"
+        );
+      }
+    } catch (error) {
+      console.error("Error deleting menu item:", error);
+      showNotification(
+        "An error occurred while deleting the menu item",
+        "error"
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="container mx-auto px-4 py-8 bg-primary">
       <div className="flex items-center justify-center mb-8">
@@ -294,6 +328,7 @@ export default function OwnerDashboard() {
           <MenuManagementPanel
             menuItems={menuItems}
             onEditItem={handleEditMenu}
+            onDeleteItem={handleDeleteMenu}
           />
         </div>
       ) : (

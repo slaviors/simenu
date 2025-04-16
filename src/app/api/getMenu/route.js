@@ -3,12 +3,9 @@ import { query } from '../db/db';
 
 export async function GET(request) {
   try {
-    const menuItems = await query(`
-      SELECT id, name, description, price, category, imageUrl 
-      FROM menu_items 
-      WHERE active = 1
-      ORDER BY category, name
-    `);
+    const menuItems = await query(
+      "SELECT * FROM menu_items WHERE active = 1 ORDER BY id DESC"
+    );
     
     return NextResponse.json(menuItems);
   } catch (error) {
