@@ -243,13 +243,13 @@ export default function OwnerDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-primary">
+    <div className="min-h-screen bg-[#FAF1E6]">
       <Navbar />
       
       <div className="container mx-auto px-4 py-8 pt-24">
         {notification && (
           <div
-            className={`mb-6 p-3 rounded-md ${
+            className={`mb-6 p-3 rounded-md border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${
               notification.type === "error"
                 ? "bg-red-100 text-red-800"
                 : "bg-green-100 text-green-800"
@@ -259,12 +259,12 @@ export default function OwnerDashboard() {
           </div>
         )}
         
-        <div className="flex border-b border-gray-200 mb-6">
+        <div className="flex flex-wrap border-2 border-black rounded-md bg-white p-2 mb-6 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
           <button
-            className={`py-2 px-4 font-medium mr-4 ${
+            className={`py-2 px-4 font-medium mr-2 mb-2 rounded-md border-2 border-black transition-all ${
               activeTab === "orders"
-                ? "text-highlight border-b-2 border-highlight"
-                : "text-gray-500 hover:text-gray-700"
+                ? "bg-[#99BC85] text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                : "bg-white text-gray-700 hover:bg-gray-100 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
             }`}
             onClick={() => setActiveTab("orders")}
           >
@@ -276,20 +276,20 @@ export default function OwnerDashboard() {
             )}
           </button>
           <button
-            className={`py-2 px-4 font-medium ${
+            className={`py-2 px-4 font-medium mr-2 mb-2 rounded-md border-2 border-black transition-all ${
               activeTab === "menu"
-                ? "text-highlight border-b-2 border-highlight"
-                : "text-gray-500 hover:text-gray-700"
+                ? "bg-[#99BC85] text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                : "bg-white text-gray-700 hover:bg-gray-100 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
             }`}
             onClick={() => setActiveTab("menu")}
           >
             Menu Management
           </button>
           <button
-            className={`py-2 px-4 font-medium ${
+            className={`py-2 px-4 font-medium mb-2 rounded-md border-2 border-black transition-all ${
               activeTab === "bills"
-                ? "text-highlight border-b-2 border-highlight"
-                : "text-gray-500 hover:text-gray-700"
+                ? "bg-[#99BC85] text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                : "bg-white text-gray-700 hover:bg-gray-100 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
             }`}
             onClick={() => setActiveTab("bills")}
           >
@@ -304,7 +304,7 @@ export default function OwnerDashboard() {
 
         {isLoading && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-30">
-            <div className="bg-white p-4 rounded-md shadow-md">Processing...</div>
+            <div className="bg-white p-4 rounded-md border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">Processing...</div>
           </div>
         )}
 
@@ -318,7 +318,7 @@ export default function OwnerDashboard() {
             <div className="flex justify-end mb-4">
               <button
                 onClick={handleAddMenu}
-                className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+                className="px-4 py-2 bg-[#99BC85] text-white rounded-md border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all"
               >
                 Add Menu Item
               </button>
