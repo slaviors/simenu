@@ -16,38 +16,37 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white shadow-[0_4px_0px_0px_rgba(0,0,0,1)]' : 'bg-transparent'
-    }`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-[0_4px_0px_0px_rgba(0,0,0,1)]' : 'bg-transparent'
+      }`}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <span className="border-2 border-black bg-white rounded-md shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-            <div className="relative w-32 h-11">
-              <Image
-                src="/image/logo.png"
-                alt="Simenu Logo"
-                fill
-                className="object-contain"
-              />
-            </div>
+              <div className="relative w-32 h-11">
+                <Image
+                  src="/image/logo.png"
+                  alt="Simenu Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
             </span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link 
-              href="/demo" 
+            <Link
+              href="/demo"
               className="text-gray-700 hover:text-[#99BC85] font-medium border-2 border-black bg-white px-4 py-1 rounded-md shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all"
             >
               Demo
             </Link>
-            <Link 
-              href="/owner" 
+            <Link
+              href="/manage"
               className="text-gray-700 hover:text-[#99BC85] font-medium border-2 border-black bg-white px-4 py-1 rounded-md shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all"
             >
-              Owner
+              Manage
             </Link>
           </div>
 
@@ -84,9 +83,8 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         <div
-          className={`md:hidden border-2 border-black bg-white rounded-md shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${
-            isMenuOpen ? 'block' : 'hidden'
-          }`}
+          className={`md:hidden border-2 border-black bg-white rounded-md shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${isMenuOpen ? 'block' : 'hidden'
+            }`}
         >
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Link
@@ -97,11 +95,11 @@ export default function Navbar() {
               Demo
             </Link>
             <Link
-              href="/owner"
+              href="/manage"
               className="block px-3 py-2 text-gray-700 hover:text-[#99BC85] font-medium border-2 border-black bg-white rounded-md shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all"
               onClick={() => setIsMenuOpen(false)}
             >
-              Owner
+              Manage
             </Link>
           </div>
         </div>
